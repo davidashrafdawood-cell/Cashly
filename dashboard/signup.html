@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signup - كاشلي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <!-- Login Page Background -->
+  <div
+    class="relative min-h-screen bg-gradient-to-bl from-[#001f3f] via-[#003366] to-[#ffecd2] overflow-hidden flex items-center justify-center">
+    <div
+      class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/graphy.png')] opacity-10 animate-pulse">
+    </div>
+
+    <!-- Animated shapes -->
+    <div
+      class="absolute top-10 right-10 w-80 h-80 bg-orange-400 rounded-full mix-blend-overlay opacity-30 animate-blob1">
+    </div>
+    <div
+      class="absolute bottom-10 left-10 w-72 h-72 bg-blue-800 rounded-full mix-blend-overlay opacity-20 animate-blob2">
+    </div>
+
+    <!-- Login Form -->
+    <div
+      class="relative z-10 bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-10 shadow-lg w-full max-w-md animate-fade-in-up">
+      <h2 class="text-white text-3xl font-bold mb-6 text-center"> انشاء حساب جديد </h2>
+      <form id="signup-form" class="space-y-4">
+        <input type="text" placeholder="اسم المستخدم" id="signup-username"
+          class="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
+          required>
+        <input id="signup-password" type="password" placeholder="كلمة المرور"
+          class="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
+          required>
+        <button type="submit"
+          class="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg font-semibold shadow-md transition duration-300">دخول</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes blob1 {
+
+      0%,
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      50% {
+        transform: scale(1.1) translate(-20px, 20px);
+      }
+    }
+
+    @keyframes blob2 {
+
+      0%,
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+
+      50% {
+        transform: scale(1.1) translate(30px, -20px);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fade-in-up 1.5s ease-out;
+    }
+
+    .animate-blob1 {
+      animation: blob1 12s infinite ease-in-out;
+    }
+
+    .animate-blob2 {
+      animation: blob2 10s infinite ease-in-out;
+    }
+  </style>
+  <script src="scripts.js"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const signupForm = document.getElementById("signup-form");
+      if (signupForm) {
+        signupForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("signup-username").value;
+          const password = document.getElementById("signup-password").value;
+
+          localStorage.setItem("user", JSON.stringify({ username, password }));
+
+          alert("تم إنشاء الحساب بنجاح!");
+          window.location.href = "login.html";
+        });
+    }
+  });
+  </script>
+</body>
+
+</html>

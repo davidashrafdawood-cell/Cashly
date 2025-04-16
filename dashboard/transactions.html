@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - كاشلي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .service-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            background-color: rgba(255, 165, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.4s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Transactions Page -->
+    <div class="min-h-screen bg-gradient-to-br from-[#001f3f] via-[#003366] to-[#ffecd2] text-white flex">
+
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#002244] p-6 space-y-4 hidden md:block">
+            <h2 class="text-2xl font-bold mb-6">Kashly</h2>
+            <nav class="space-y-3">
+                <a href="dashboard.html" class="block hover:text-orange-400">الرئيسية</a>
+                <a href="#" class="block hover:text-orange-400">المعاملات</a>
+                <a href="card.html" class="block hover:text-orange-400">الكرت</a>
+                <a href="#" class="block hover:text-orange-400">الاعدادات</a>
+                <a href="login.html" class="block text-red-400 hover:text-red-500 mt-6">تسجيل الخروج</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <!-- Navbar -->
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold">صفحة المعاملات</h1>
+                <nav class="space-x-4 rtl:space-x-reverse">
+                    <a href="dashboard.html" class="text-orange-400 hover:underline">العودة للوحة التحكم</a>
+                </nav>
+            </header>
+
+            <!-- Most Used Services -->
+            <section class="mb-10">
+                <h2 class="text-xl font-semibold mb-4">الخدمات الأكثر استخداماً</h2>
+                <div id="servicesGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 transition-all">
+                    <div class="service-box" onclick="showPopup('شحن الموبايل')">
+                        <div class="text-3xl mb-2">📱</div>
+                        <div>شحن الموبايل</div>
+                    </div>
+                    <div class="service-box" onclick="showPopup('الإنترنت المنزلي')">
+                        <div class="text-3xl mb-2">🌐</div>
+                        <div>الإنترنت المنزلي</div>
+                    </div>
+                    <div class="service-box" onclick="showPopup('مخالفات المرور')">
+                        <div class="text-3xl mb-2">🚗</div>
+                        <div>مخالفات المرور</div>
+                    </div>
+                    <div class="service-box" onclick="showPopup('شحن كارت الكهرباء')">
+                        <div class="text-3xl mb-2">💡</div>
+                        <div>شحن كارت الكهرباء</div>
+                    </div>
+                </div>
+                <button onclick="showMoreServices()"
+                    class="mt-4 px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-full transition">عرض كل
+                    الخدمات</button>
+            </section>
+
+            <!-- Monthly Summary -->
+            <section class="mb-10">
+                <h2 class="text-xl font-semibold mb-4">إجمالي المصروفات هذا الشهر</h2>
+                <div class="bg-white/10 p-6 rounded-lg flex justify-between items-center">
+                    <span class="text-2xl font-bold">2,450 جنيه</span>
+                    <button class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded transition">عرض
+                        المعاملات</button>
+                </div>
+            </section>
+
+            <!-- Subscribed Offers -->
+            <section>
+                <h2 class="text-xl font-semibold mb-4">العروض المشترك بها</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-white/10 p-4 rounded-lg hover:bg-white/20 transition">
+                        <h3 class="font-bold text-lg mb-2">عرض الإنترنت السريع</h3>
+                        <p class="text-sm">احصل على خصم 20% عند شحن باقات الإنترنت.</p>
+                    </div>
+                    <div class="bg-white/10 p-4 rounded-lg hover:bg-white/20 transition">
+                        <h3 class="font-bold text-lg mb-2">عرض الكهرباء الموفر</h3>
+                        <p class="text-sm">خصومات على شحن كروت الكهرباء عند استخدام Kashly.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
+        <div class="bg-white text-black rounded-xl shadow-xl p-6 max-w-sm text-center animate-fade-in">
+            <h3 class="text-lg font-bold mb-2">⚠️ الخدمة قيد التطوير</h3>
+            <p class="mb-4">نأسف، هذه الخدمة لم تتوفر بعد. ترقبوا التحديثات القادمة.</p>
+            <button onclick="hidePopup()"
+                class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">حسناً</button>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(serviceName) {
+            document.getElementById("popup").classList.remove("hidden");
+        }
+        function hidePopup() {
+            document.getElementById("popup").classList.add("hidden");
+        }
+
+        function showMoreServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            const extraServices = [
+                { icon: '☎️', title: 'فاتورة الموبايل' },
+                { icon: '📞', title: 'التليفون الأرضي' },
+                { icon: '🔥', title: 'شحن كارت الغاز' },
+                { icon: '🚿', title: 'شحن كارت المياه' },
+                { icon: '🏦', title: 'المالية والبنوك' },
+                { icon: '🎓', title: 'النقابات' },
+                { icon: '🛡️', title: 'التأمينات' },
+                { icon: '❤️', title: 'تبرعات' }
+            ];
+            extraServices.forEach(service => {
+                const div = document.createElement('div');
+                div.className = "service-box";
+                div.onclick = () => showPopup(service.title);
+                div.innerHTML = `<div class="text-3xl mb-2">${service.icon}</div><div>${service.title}</div>`;
+                servicesGrid.appendChild(div);
+            });
+            event.target.remove();
+        }
+    </script>
+</body>
+
+</html>

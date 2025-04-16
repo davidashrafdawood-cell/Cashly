@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kashly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Landing Page Background -->
+    <div class="relative min-h-screen bg-gradient-to-br from-[#001f3f] via-[#003366] to-[#ffecd2] overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/graphy.png')] opacity-10 animate-pulse">
+        </div>
+        <div class="relative z-10 flex flex-col justify-center items-center text-white py-32 px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 animate-fade-in-up">مرحباً بك في <span
+                    class="text-orange-400">كاشلي</span></h1>
+            <p class="text-lg md:text-xl mb-8 max-w-xl animate-fade-in">تحكم في أموالك بسهولة، اربط بطاقتك البنكية،
+                ادفع، اشحن، واستمتع بخدمات التقسيط والادخار والعروض الحصرية.</p>
+            <a href="dashboard/login.html"
+                class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 animate-fade-in">ابدأ
+                الآن</a>
+        </div>
+
+        <!-- Dynamic animated background shapes -->
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-orange-400 rounded-full mix-blend-overlay opacity-30 animate-blob1">
+        </div>
+        <div
+            class="absolute top-0 left-0 w-80 h-80 bg-blue-900 rounded-full mix-blend-overlay opacity-20 animate-blob2">
+        </div>
+    </div>
+
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blob1 {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.1) translate(-20px, 20px);
+            }
+        }
+
+        @keyframes blob2 {
+
+            0%,
+            100% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.1) translate(30px, -20px);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 1.2s ease-out;
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 1.5s ease-out;
+        }
+
+        .animate-blob1 {
+            animation: blob1 12s infinite ease-in-out;
+        }
+
+        .animate-blob2 {
+            animation: blob2 10s infinite ease-in-out;
+        }
+    </style>
+</body>
+
+</html>

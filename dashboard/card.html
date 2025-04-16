@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card - كاشلي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Card Page -->
+    <div class="min-h-screen flex flex-row-reverse bg-gradient-to-br from-[#f3f4f6] to-[#e5e7eb] text-gray-800">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#1e3a8a] text-white shadow-xl p-6 space-y-6">
+            <nav class="space-y-4">
+                <a href="dashboard.html" class="block px-4 py-2 rounded hover:bg-blue-700 transition">الصفحة
+                    الرئيسية</a>
+                <a href="transactions.html" class="block px-4 py-2 rounded hover:bg-blue-700 transition">المعاملات</a>
+                <a href="#" class="block px-4 py-2 rounded hover:bg-blue-700 transition">الاعدادات</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 relative">
+            <!-- Navbar -->
+            <header class="flex justify-between items-center mb-6 bg-white p-4 rounded-lg shadow">
+                <h2 class="text-2xl font-bold text-[#1e3a8a]">بطاقة Kashly</h2>
+                <div class="space-x-4 rtl:space-x-reverse">
+                    <a href="dashboard.html"
+                        class="bg-[#1e3a8a] hover:bg-[#1c3a7a] text-white px-4 py-2 rounded shadow transition">العودة
+                        للوحة التحكم</a>
+                    <a href="login.html"
+                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow transition">تسجيل
+                        الخروج</a>
+                </div>
+            </header>
+
+            <!-- Card Display -->
+            <div
+                class="relative bg-gradient-to-br from-[#1e3a8a] to-[#3b82f6] text-white w-96 h-56 rounded-2xl shadow-xl p-6 mx-auto mb-10">
+                <div class="flex justify-between text-sm mb-4">
+                    <div>بطاقة Kashly</div>
+                    <div>07/25</div>
+                </div>
+                <div class="text-2xl tracking-widest font-bold mb-4">4581 0258 9012 3286</div>
+                <div class="text-sm">الاسم: معتز أحمد</div>
+                <div class="absolute bottom-4 right-6 text-xs opacity-75">KASHLY BANK</div>
+                <div class="text-right">
+                    <p class="text-sm">الرصيد الحالي:</p>
+                    <p class="text-2xl font-bold">270.91 ج.م</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-center">
+                <button
+                    class="bg-red-500 hover:bg-red-600 text-white py-4 rounded-xl text-lg font-semibold shadow-lg transition">سحب
+                    كاش</button>
+                <button
+                    class="bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-semibold shadow-lg transition">تحويل
+                    نقود</button>
+                <button onclick="toggleTopUp()"
+                    class="bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl text-lg font-semibold shadow-lg transition">إضافة
+                    رصيد</button>
+            </div>
+
+            <!-- Top-Up Popup -->
+            <div id="topupPopup"
+                class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 space-y-4 animate-fade-in">
+                    <h3 class="text-xl font-bold text-center text-[#1e3a8a] mb-4">اختر طريقة إضافة الرصيد</h3>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="border rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer">
+                            <img src="https://cdn-icons-png.flaticon.com/128/633/633611.png"
+                                class="w-8 h-8 mx-auto mb-2" />
+                            <p>بطاقة بنكية</p>
+                        </div>
+                        <div class="border rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer">
+                            <img src="https://cdn-icons-png.flaticon.com/128/10416/10416352.png"
+                                class="w-8 h-8 mx-auto mb-2" />
+                            <p>محفظة إلكترونية</p>
+                        </div>
+                        <div class="border rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer">
+                            <img src="https://cdn-icons-png.flaticon.com/128/854/854878.png"
+                                class="w-8 h-8 mx-auto mb-2" />
+                            <p>فرع Kashly</p>
+                        </div>
+                        <div class="border rounded-lg p-4 hover:bg-gray-100 transition cursor-pointer">
+                            <img src="https://cdn-icons-png.flaticon.com/128/2838/2838912.png"
+                                class="w-8 h-8 mx-auto mb-2" />
+                            <p>تحويل بنكي</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button onclick="toggleTopUp()"
+                            class="mt-4 bg-gray-300 hover:bg-gray-400 text-black px-6 py-2 rounded transition">إلغاء</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Installments Section -->
+            <div class="text-right">
+                <h3 class="text-xl font-bold text-[#1e3a8a] mb-4">عروض التقسيط المشترك فيها</h3>
+                <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                    <p class="mb-2 font-medium">موبايل سامسونج A54 - خطة 12 شهر</p>
+                    <div class="bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-500">رسم بياني
+                        (قريبًا)</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <p class="mb-2 font-medium">لاب توب HP - خطة 6 شهور</p>
+                    <div class="bg-gray-100 h-40 rounded-lg flex items-center justify-center text-gray-500">رسم بياني
+                        (قريبًا)</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleTopUp() {
+            const popup = document.getElementById("topupPopup");
+            popup.classList.toggle("hidden");
+        }
+    </script>
+</body>
+
+</html>
