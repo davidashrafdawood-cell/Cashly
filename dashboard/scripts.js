@@ -53,13 +53,13 @@ function showInstallments() {
     document.getElementById("mainNavbar").classList.remove("hidden");
 }
 
-// function openPopup(serviceName) {
-//     document.getElementById("popupTitle").textContent = serviceName;
-//     document.getElementById("servicePopup").classList.remove("hidden");
-// }
-// function closePopup() {
-//     document.getElementById("servicePopup").classList.add("hidden");
-// }
+function openPopup(serviceName) {
+    document.getElementById("popupTitle").textContent = serviceName;
+    document.getElementById("servicePopup").classList.remove("hidden");
+}
+function closePopup() {
+    document.getElementById("servicePopup").classList.add("hidden");
+}
 
 function subscribeOffer() {
     document.getElementById("subscribePopup").classList.remove("hidden");
