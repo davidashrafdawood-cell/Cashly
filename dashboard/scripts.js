@@ -55,7 +55,7 @@ function showInstallments() {
 
 function openPopup(serviceName) {
     document.getElementById("popupTitle").textContent = serviceName;
-    document.getElementById("servicePopup").classList.remove("hidden");
+    document.getElementById("servicePopup").classList.add("hidden");
 }
 function closePopup() {
     document.getElementById("servicePopup").classList.add("hidden");
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Generate 4 random integers between 1 and 9
     let randomNumbers = [];
     for (let i = 0; i < 4; i++) {
-        randomNumbers.push(getRandomInt(1, 9)openPopup);  // Replace 1 and 100 with your desired range
+        randomNumbers.push(getRandomInt(1, 9),openPopup());  // Replace 1 and 100 with your desired range
     }
     document.getElementById("user-num").textContent = randomNumbers.join('') + "**** **** ****";
     // وظيفة لتوليد عدد عشوائي بين min و max (شاملين)
